@@ -4,8 +4,6 @@ Kmeans in Delphi
 Example: 128 twopixel clusters.
 
 -------------------------------------------------------
-
-
 procedure TForm1.Button1Click(Sender: TObject);
 var
   x,y,grey,width,height:integer;
