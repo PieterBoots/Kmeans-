@@ -4,49 +4,50 @@ Kmeans in Delphi
 Example: 128 twopixel clusters.
 
 -------------------------------------------------------
-<p><span style="font-family:Arial,Helvetica,sans-serif">procedure TForm1.Button1Click(Sender: TObject);<br />
-var<br />
-&nbsp; x,y,grey,width,height:integer;<br />
-&nbsp; kmeans:TKmeans ;<br />
-&nbsp; values:TArrayOfDouble;<br />
-&nbsp; NCanvas:Tncanvas;<br />
-&nbsp; clusterdata1,Clusterdata2:TMultiDouble ;<br />
-begin<br />
-&nbsp; Image1.Picture.Bitmap.LoadFromFile(&#39;Kawasaki_Valencia_2007_09_160x120 - grey.bmp&#39;);<br />
-&nbsp; height:=Image1.Picture.Bitmap.Height;<br />
-&nbsp; width:=Image1.Picture.Bitmap.width;<br />
-&nbsp; kmeans:=TKmeans.Create(height*width div 2,2,128);<br />
-&nbsp; NCanvas:=TNCanvas( Image1.Picture.Bitmap.Canvas);<br />
-&nbsp; for y:=0 to height-1 do<br />
-&nbsp; begin<br />
-&nbsp; &nbsp; for x:=0 to (Width div 2)-1 do<br />
-&nbsp; &nbsp; begin<br />
-&nbsp; &nbsp; &nbsp;with NCanvas do<br />
-&nbsp; &nbsp; &nbsp;begin<br />
-&nbsp; &nbsp; &nbsp; &nbsp;moveto(x*2,y);<br />
-&nbsp; &nbsp; &nbsp; &nbsp; kmeans.setValue(x+y*Width div 2,[<br />
-&nbsp; &nbsp; &nbsp; &nbsp; getpixel2(0,0) and 255,<br />
-&nbsp; &nbsp; &nbsp; &nbsp; getpixel2(1,0) and 255]<br />
-&nbsp; &nbsp; &nbsp; &nbsp;);<br />
-&nbsp; &nbsp; &nbsp;end;<br />
-&nbsp; &nbsp; end;<br />
-&nbsp; end;<br />
-&nbsp; // initialize<br />
-&nbsp; kmeans.doKmeans(40,5000) ;<br />
-&nbsp; label1.Caption:=floattostr(error);<br />
-&nbsp; grey:=(1+256+65536);<br />
-&nbsp; for y:=0 to height-1 do<br />
-&nbsp; begin<br />
-&nbsp; &nbsp; for x:=0 to (Width div 2)-1 do<br />
-&nbsp; &nbsp; begin<br />
-&nbsp; &nbsp; &nbsp;with NCanvas do<br />
-&nbsp; &nbsp; &nbsp;begin<br />
-&nbsp; &nbsp; &nbsp; &nbsp;moveto(x*2,y);<br />
-&nbsp; &nbsp; &nbsp; &nbsp;values:= kmeans.getValue(x+y*Width div 2);<br />
-&nbsp; &nbsp; &nbsp; &nbsp;setpixel2(0,0,round(values[0])*grey);<br />
-&nbsp; &nbsp; &nbsp; &nbsp;setpixel2(1,0,round(values[1])*grey);<br />
-&nbsp; &nbsp; &nbsp;end;<br />
-&nbsp; &nbsp; end;<br />
-&nbsp; end;<br />
-end;</span></p>
-
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">procedure</span> <span style="color: #BB0066; font-weight: bold">TForm1</span><span style="color: #333333">.</span><span style="color: #0066BB; font-weight: bold">Button1Click</span>(Sender<span style="color: #333333">:</span> <span style="color: #333399; font-weight: bold">TObject</span>)<span style="color: #333333">;</span>
+<span style="color: #008800; font-weight: bold">var</span>
+  x<span style="color: #333333">,</span>y<span style="color: #333333">,</span>grey<span style="color: #333333">,</span>width<span style="color: #333333">,</span>height<span style="color: #333333">:</span><span style="color: #333399; font-weight: bold">integer</span><span style="color: #333333">;</span>
+  kmeans<span style="color: #333333">:</span>TKmeans <span style="color: #333333">;</span>
+  values<span style="color: #333333">:</span>TArrayOfDouble<span style="color: #333333">;</span>
+  NCanvas<span style="color: #333333">:</span>Tncanvas<span style="color: #333333">;</span>
+  clusterdata1<span style="color: #333333">,</span>Clusterdata2<span style="color: #333333">:</span>TMultiDouble <span style="color: #333333">;</span>
+<span style="color: #008800; font-weight: bold">begin</span>
+  Image1<span style="color: #333333">.</span>Picture<span style="color: #333333">.</span>Bitmap<span style="color: #333333">.</span>LoadFromFile(<span style="background-color: #fff0f0">&#39;Kawasaki_Valencia_2007_09_160x120 - grey.bmp&#39;</span>)<span style="color: #333333">;</span>
+ <span style="color: #888888">//Image1.Picture.Bitmap.LoadFromFile(&#39;C:\Users\admin\Desktop\IMG_20170609_160214242.bmp&#39;);</span>
+  height<span style="color: #333333">:=</span>Image1<span style="color: #333333">.</span>Picture<span style="color: #333333">.</span>Bitmap<span style="color: #333333">.</span>Height<span style="color: #333333">;</span>
+  width<span style="color: #333333">:=</span>Image1<span style="color: #333333">.</span>Picture<span style="color: #333333">.</span>Bitmap<span style="color: #333333">.</span>width<span style="color: #333333">;</span>
+  kmeans<span style="color: #333333">:=</span>TKmeans<span style="color: #333333">.</span>Create(height<span style="color: #333333">*</span>width <span style="color: #008800; font-weight: bold">div</span> <span style="color: #0000DD; font-weight: bold">2</span><span style="color: #333333">,</span><span style="color: #0000DD; font-weight: bold">2</span><span style="color: #333333">,</span><span style="color: #0000DD; font-weight: bold">128</span>)<span style="color: #333333">;</span>
+  NCanvas<span style="color: #333333">:=</span>TNCanvas( Image1<span style="color: #333333">.</span>Picture<span style="color: #333333">.</span>Bitmap<span style="color: #333333">.</span>Canvas)<span style="color: #333333">;</span>
+  <span style="color: #008800; font-weight: bold">for</span> y<span style="color: #333333">:=</span><span style="color: #0000DD; font-weight: bold">0</span> <span style="color: #008800; font-weight: bold">to</span> height<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span> <span style="color: #008800; font-weight: bold">do</span>
+  <span style="color: #008800; font-weight: bold">begin</span>
+    <span style="color: #008800; font-weight: bold">for</span> x<span style="color: #333333">:=</span><span style="color: #0000DD; font-weight: bold">0</span> <span style="color: #008800; font-weight: bold">to</span> (Width <span style="color: #008800; font-weight: bold">div</span> <span style="color: #0000DD; font-weight: bold">2</span>)<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span> <span style="color: #008800; font-weight: bold">do</span>
+    <span style="color: #008800; font-weight: bold">begin</span>
+     <span style="color: #008800; font-weight: bold">with</span> NCanvas <span style="color: #008800; font-weight: bold">do</span>
+     <span style="color: #008800; font-weight: bold">begin</span>
+       moveto(x<span style="color: #333333">*</span><span style="color: #0000DD; font-weight: bold">2</span><span style="color: #333333">,</span>y)<span style="color: #333333">;</span>
+        kmeans<span style="color: #333333">.</span>setValue(x<span style="color: #333333">+</span>y<span style="color: #333333">*</span>Width <span style="color: #008800; font-weight: bold">div</span> <span style="color: #0000DD; font-weight: bold">2</span><span style="color: #333333">,</span>[
+        getpixel2(<span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">,</span><span style="color: #0000DD; font-weight: bold">0</span>) <span style="color: #008800; font-weight: bold">and</span> <span style="color: #0000DD; font-weight: bold">255</span><span style="color: #333333">,</span>
+        getpixel2(<span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">,</span><span style="color: #0000DD; font-weight: bold">0</span>) <span style="color: #008800; font-weight: bold">and</span> <span style="color: #0000DD; font-weight: bold">255</span>]
+       )<span style="color: #333333">;</span>
+     <span style="color: #008800; font-weight: bold">end</span><span style="color: #333333">;</span>
+    <span style="color: #008800; font-weight: bold">end</span><span style="color: #333333">;</span>
+  <span style="color: #008800; font-weight: bold">end</span><span style="color: #333333">;</span>
+  <span style="color: #888888">// initialize</span>
+  kmeans<span style="color: #333333">.</span>doKmeans(<span style="color: #0000DD; font-weight: bold">40</span><span style="color: #333333">,</span><span style="color: #0000DD; font-weight: bold">5000</span>) <span style="color: #333333">;</span>
+  label1<span style="color: #333333">.</span>Caption<span style="color: #333333">:=</span><span style="color: #007020">floattostr</span>(error)<span style="color: #333333">;</span>
+  grey<span style="color: #333333">:=</span>(<span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">+</span><span style="color: #0000DD; font-weight: bold">256</span><span style="color: #333333">+</span><span style="color: #0000DD; font-weight: bold">65536</span>)<span style="color: #333333">;</span>
+  <span style="color: #008800; font-weight: bold">for</span> y<span style="color: #333333">:=</span><span style="color: #0000DD; font-weight: bold">0</span> <span style="color: #008800; font-weight: bold">to</span> height<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span> <span style="color: #008800; font-weight: bold">do</span>
+  <span style="color: #008800; font-weight: bold">begin</span>
+    <span style="color: #008800; font-weight: bold">for</span> x<span style="color: #333333">:=</span><span style="color: #0000DD; font-weight: bold">0</span> <span style="color: #008800; font-weight: bold">to</span> (Width <span style="color: #008800; font-weight: bold">div</span> <span style="color: #0000DD; font-weight: bold">2</span>)<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span> <span style="color: #008800; font-weight: bold">do</span>
+    <span style="color: #008800; font-weight: bold">begin</span>
+     <span style="color: #008800; font-weight: bold">with</span> NCanvas <span style="color: #008800; font-weight: bold">do</span>
+     <span style="color: #008800; font-weight: bold">begin</span>
+       moveto(x<span style="color: #333333">*</span><span style="color: #0000DD; font-weight: bold">2</span><span style="color: #333333">,</span>y)<span style="color: #333333">;</span>
+       values<span style="color: #333333">:=</span> kmeans<span style="color: #333333">.</span>getValue(x<span style="color: #333333">+</span>y<span style="color: #333333">*</span>Width <span style="color: #008800; font-weight: bold">div</span> <span style="color: #0000DD; font-weight: bold">2</span>)<span style="color: #333333">;</span>
+       setpixel2(<span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">,</span><span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">,</span><span style="color: #007020">round</span>(values[<span style="color: #0000DD; font-weight: bold">0</span>])<span style="color: #333333">*</span>grey)<span style="color: #333333">;</span>
+       setpixel2(<span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">,</span><span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">,</span><span style="color: #007020">round</span>(values[<span style="color: #0000DD; font-weight: bold">1</span>])<span style="color: #333333">*</span>grey)<span style="color: #333333">;</span>
+     <span style="color: #008800; font-weight: bold">end</span><span style="color: #333333">;</span>
+    <span style="color: #008800; font-weight: bold">end</span><span style="color: #333333">;</span>
+  <span style="color: #008800; font-weight: bold">end</span><span style="color: #333333">;</span>
+<span style="color: #008800; font-weight: bold">end</span><span style="color: #333333">;</span>
+</pre></div>
