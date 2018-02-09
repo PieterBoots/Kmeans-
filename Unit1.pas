@@ -36,8 +36,8 @@ var
   clusterdata1,Clusterdata2:TMultiDouble ;
 begin
 
- // Image1.Picture.Bitmap.LoadFromFile('Kawasaki_Valencia_2007_09_160x120 - grey.bmp');
-  Image1.Picture.Bitmap.LoadFromFile('C:\Users\admin\Desktop\IMG_20170609_160214242.bmp');
+  Image1.Picture.Bitmap.LoadFromFile('Kawasaki_Valencia_2007_09_160x120 - grey.bmp');
+ //Image1.Picture.Bitmap.LoadFromFile('C:\Users\admin\Desktop\IMG_20170609_160214242.bmp');
   height:=Image1.Picture.Bitmap.Height;
   width:=Image1.Picture.Bitmap.width;
 
